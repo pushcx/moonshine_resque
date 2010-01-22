@@ -6,7 +6,7 @@ require 'fileutils'
 # See http://dev.rubyonrails.org/ticket/8189
 Dir.chdir(Dir.getwd.sub(/vendor.*/, '')) do
 
-  source = File.join(File.dirname(__FILE__), 'vendor', 'plugins', 'moonshine_resque')
+  source = File.join(File.dirname(__FILE__), 'vendor', 'plugins', 'moonshine_resque', 'templates')
   [
     ["load_resque.conf", "config/initializers/"],
     ["resque.conf", "config/"],
