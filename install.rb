@@ -1,5 +1,7 @@
 # Install resque initializer
 
+require 'fileutils'
+
 # Workaround a problem with script/plugin and http-based repos.
 # See http://dev.rubyonrails.org/ticket/8189
 Dir.chdir(Dir.getwd.sub(/vendor.*/, '')) do
