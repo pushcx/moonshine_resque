@@ -18,7 +18,7 @@ module Resque
       :content => template(File.join(File.dirname(__FILE__), '..', 'templates', 'redis.conf.erb'), binding),
       :ensure => :file,
       :mode => '644',
-      :require => 'install redis',
+      :require => exec('install redis'),
       :notify => service('redis-server')
 
     service 'redis-server',
@@ -33,7 +33,7 @@ module Resque
     gem 'resque'
 
     exec 'install resque',
-      :require => 'redis-server'
+      :require => service('redis-server')
   end
   
 end
