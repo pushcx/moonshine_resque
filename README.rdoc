@@ -25,8 +25,8 @@ resque[http://github.com/defunkt/resque] from latest source.
 
 ==== Todo
 
-Patches welcome!
+Patches and pull requests welcome!
 
 * Support releases as well as (the current) use of the most recent source. 
 * Support installing redis without the resque gem
-
+* Pass the pidfile from configuration to :stop for the 'redis-server' service

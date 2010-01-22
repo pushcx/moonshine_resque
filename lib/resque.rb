@@ -22,7 +22,7 @@ module Resque
       :notify => service('redis-server')
 
     service 'redis-server',
-      :binary => '/usr/bin/redis-server',
+      :start => '/usr/bin/redis-server',
       :pattern => 'redis-server',
       :ensure => :running,
       :enable => true,
