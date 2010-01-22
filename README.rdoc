@@ -1,16 +1,32 @@
+= 2010-01-21: This plugin *should* install redis and resque but has not been tested. 'Ware.
+
 = Moonshine_Resque
 
 === A plugin for Moonshine[http://github.com/railsmachine/moonshine]
 
-A plugin for installing and managing resque[http://github.com/defunkt/resque].
-(You can also get just Redis from this, if you want.)
+A plugin for installing and managing redis and
+resque[http://github.com/defunkt/resque] from latest source.
 
 === Instructions
 
 * <tt>script/plugin install git://github.com/Harkins/moonshine_resque.git</tt>
 * Configure settings in your moonshine.yml - see templates/redis.conf.erb for
   the heavily-commented complete list. (Or use configure() in manifest as usual.)
+* add this to the end of your Rakefile:
+
+    require 'resque/tasks'
+
+* Remove config/initializers/load_resque.rb if you're not using it
+* Edit (or remove) config/resque.yml to match your production setup
 * Include the plugin and recipe(s) in your Moonshine manifest
     plugin :resque
     recipe :redis
     recipe :resque # optional
+
+==== Todo
+
+Patches welcome!
+
+* Support releases as well as (the current) use of the most recent source. 
+* Support installing redis without the resque gem
+
