@@ -1,0 +1,14 @@
+= Moonshine_Resque
+
+=== A plugin for Moonshine[http://github.com/railsmachine/moonshine]
+
+A plugin for installing and managing resque.
+
+=== Instructions
+
+* <tt>script/plugin install git://github.com/ACCOUNT/moonshine_resque.git</tt>
+* Configure settings if needed
+    configure(:resque => {:foo => true})
+* Include the plugin and recipe(s) in your Moonshine manifest
+    plugin :resque
+    recipe :resque
