@@ -22,6 +22,7 @@ module Resque
       :notify => service('redis-server')
 
     service 'redis-server',
+      :provider => :base,
       :start => '/usr/bin/redis-server',
       :pattern => 'redis-server',
       :ensure => :running,
