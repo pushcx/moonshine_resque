@@ -1,11 +1,7 @@
-= 2010-01-21: This plugin *should* install redis and resque but has not been tested. 'Ware.
-
 = Moonshine_Resque
 
-=== A plugin for Moonshine[http://github.com/railsmachine/moonshine]
-
-A plugin for installing and managing redis and
-resque[http://github.com/defunkt/resque] from latest source.
+A Moonshine[http://github.com/railsmachine/moonshine] plugin for installing and
+managing redis and resque[http://github.com/defunkt/resque] from latest source.
 
 === Instructions
 
@@ -23,7 +19,7 @@ resque[http://github.com/defunkt/resque] from latest source.
     recipe :redis
     recipe :resque # optional
 
-==== Todo
+=== Todo
 
 Patches and pull requests welcome!
 

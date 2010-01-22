@@ -23,7 +23,7 @@ module Resque
 
     service 'redis-server',
       :provider => :base,
-      :start => '/usr/bin/redis-server',
+      :start => '/usr/bin/redis-server /etc/redis.conf',
       :pattern => 'redis-server',
       :ensure => :running,
       :enable => true,
