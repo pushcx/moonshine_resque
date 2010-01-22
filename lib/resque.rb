@@ -19,14 +19,14 @@ module Resque
       :ensure => :file,
       :mode => '644',
       :require => 'install redis',
-      :notify => service('redis-server'),
+      :notify => service('redis-server')
 
     service 'redis-server',
       :binary => '/usr/bin/redis-server',
       :pattern => 'redis-server',
       :ensure => :running,
       :enable => true,
-      :require => '/etc/redis.conf',
+      :require => '/etc/redis.conf'
   end
 
   def resque(options = {} )
