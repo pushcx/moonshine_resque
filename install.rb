@@ -10,7 +10,6 @@ Dir.chdir(Dir.getwd.sub(/vendor.*/, '')) do
     ["load_resque.conf", "config/initializers/"],
     ["resque.yml", "config/"],
   ].each do |file, to|
-    puts file, to
     FileUtils.cp "vendor/plugins/moonshine_resque/templates/#{file}", to
   end
 
