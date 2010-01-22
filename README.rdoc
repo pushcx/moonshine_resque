@@ -2,13 +2,15 @@
 
 === A plugin for Moonshine[http://github.com/railsmachine/moonshine]
 
-A plugin for installing and managing resque.
+A plugin for installing and managing resque[http://github.com/defunkt/resque].
+(You can also get just Redis from this, if you want.)
 
 === Instructions
 
-* <tt>script/plugin install git://github.com/ACCOUNT/moonshine_resque.git</tt>
-* Configure settings if needed
-    configure(:resque => {:foo => true})
+* <tt>script/plugin install git://github.com/Harkins/moonshine_resque.git</tt>
+* Configure settings in your moonshine.yml - see templates/redis.conf.erb for
+  the heavily-commented complete list. (Or use configure() in manifest as usual.)
 * Include the plugin and recipe(s) in your Moonshine manifest
     plugin :resque
-    recipe :resque
+    recipe :redis
+    recipe :resque # optional
