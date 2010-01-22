@@ -1,19 +1,39 @@
 module Resque
 
-  # Define options for this plugin via the <tt>configure</tt> method
-  # in your application manifest:
-  #
-  #   configure(:resque => {:foo => true})
-  #
-  # Then include the plugin and call the recipe(s) you need:
-  #
-  #  plugin :resque
-  #  recipe :resque
-  def resque(options = {})
-    # define the recipe
-    # options specified with the configure method will be 
-    # automatically available here in the options hash.
-    #    options[:foo]   # => true
+  def redis(options = {})
+    package 'redis-server', :ensure => 'absent'
+    gem 'redis'
+    gem 'resque' # needed for the rake test in the install step
+
+    exec 'install redis',
+      :cwd => '/tmp',
+      :command => [
+        'git clone git://github.com/defunkt/resque.git',
+        'cd /tmp/resque',
+        'rake redis:install dtach:install',
+      ].join(' && '),
+      :creates => '/usr/bin/redis-server'
+
+    file '/etc/redis.conf',
+      :content => template(File.join(File.dirname(__FILE__), '..', 'templates', 'redis.conf.erb'), binding),
+      :ensure => :file,
+      :mode => '644',
+      :require => 'install redis',
+      :notify => service('redis-server'),
+
+    service 'redis-server',
+      :binary => '/usr/bin/redis-server',
+      :pattern => 'redis-server',
+      :ensure => :running,
+      :enable => true,
+      :require => '/etc/redis.conf',
+  end
+
+  def resque(options = {} )
+    gem 'resque'
+
+    exec 'install resque',
+      :require => 'redis-server'
   end
   
 end
