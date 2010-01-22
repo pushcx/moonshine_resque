@@ -26,7 +26,7 @@ module Resque
       :pattern => 'redis-server',
       :ensure => :running,
       :enable => true,
-      :require => '/etc/redis.conf'
+      :require => file('/etc/redis.conf')
   end
 
   def resque(options = {} )
